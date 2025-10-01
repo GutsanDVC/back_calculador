@@ -1,5 +1,5 @@
 from utils.dw_utils import DWConnectionUtils
-
+from utils.txt_logger import writeTxtLog
 class AdminAccessRepository:
     @staticmethod
     def get_admin_access_by_email(email: str):
@@ -11,11 +11,9 @@ class AdminAccessRepository:
                     columns = [desc[0] for desc in cursor.description]
                     rows = cursor.fetchall()
                     if not rows:
-                        print("No se encontraron resultados")
                         return []
                     result = [dict(zip(columns, row)) for row in rows]
             return result
         except Exception as e:
-            # Loguear el error si es necesario
-            print(e)
+            writeTxtLog(str(e),"ERROR")
             return []

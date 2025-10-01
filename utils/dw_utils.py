@@ -11,6 +11,7 @@ class DWConnectionUtils:
         """
         Retorna una conexión psycopg2 al DW usando variables de entorno.
         """
+        
         return psycopg2.connect(
             dbname=os.getenv('DB_NAME_DW'),
             user=os.getenv('DB_USER_DW'),

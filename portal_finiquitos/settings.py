@@ -30,12 +30,14 @@ SECRET_KEY = "django-insecure-7cb$#lx^)ja8phml(euccdb@reju=mmw8q3ch%)a1az)c*xdew
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "http://localhost:5173",
+    "localhost",
     ".grupoflesan.com",
-    "https://backfiniquitos.grupoflesan.com",
-    "https://qafiniquitos.grupoflesan.com",
+    "backfiniquitos.grupoflesan.com",
+    "qafiniquitos.grupoflesan.com",
     "192.168.10.47",
-    "127.0.0.1"
+    "127.0.0.1",
+    "calculadorfiniquitos.grupoflesan.com",
+    "apicalculadorfiniquitos.grupoflesan.com"
 ]
 
 GOOGLE_ID_TOKEN_INFO_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo"
@@ -51,15 +53,12 @@ INSTALLED_APPS = [
 
     # Apps del proyecto Portal Finiquitos
     "users",         # Gestión de usuarios y perfiles
-    "employees",     # Datos maestros de trabajadores
-    "settlements",   # Lógica y modelos de finiquitos
-    "audit",         # Logs y trazabilidad de acciones
-    "core",          # Utilidades y configuración global
+    "salary",        # Salarios
+    "finiquito",     # Finiquitos
     "warehouse",     # Almacén de datos
     "custom_auth",          # Autenticación
     
     # Autenticación social y API REST
-    "django.contrib.sites",         # Requerido por allauth
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -78,11 +77,12 @@ SITE_ID = 1
 # Permitir peticiones CORS desde localhost:5173 (por ejemplo, para Vite, React, etc.)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://*.grupoflesan.com",
     "https://backfiniquitos.grupoflesan.com",
     "https://qafiniquitos.grupoflesan.com",
     "https://192.168.10.47",
-    "https://127.0.0.1"
+    "https://127.0.0.1",
+    "https://calculadorfiniquitos.grupoflesan.com",
+    "https://apicalculadorfiniquitos.grupoflesan.com"
 ]
 
 
@@ -90,13 +90,13 @@ CORS_ALLOWED_ORIGINS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "allauth.account.middleware.AccountMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "portal_finiquitos.urls"
@@ -214,3 +214,23 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": BASE_DIR / "django_debug.log",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
+}
