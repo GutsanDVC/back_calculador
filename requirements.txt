@@ -1,0 +1,36 @@
+# Dependencias del proyecto Calculador de RRHH Backend
+# Generado desde Pipfile
+
+# Framework principal
+django==4.2.11
+
+# API REST
+djangorestframework
+
+# Base de datos PostgreSQL
+psycopg2-binary
+
+# Variables de entorno
+python-dotenv
+
+# Herramientas de desarrollo y formateo
+black>=24.0,<25
+flake8==7.0
+pytest==8.0
+
+# Autenticación y autorización
+django-allauth
+dj_rest_auth
+djangorestframework-simplejwt
+
+# CORS para frontend
+django-cors-headers
+
+# Peticiones HTTP
+requests
+
+# Documentación API
+drf-yasg
+
+# Web scraping
+beautifulsoup4
