@@ -16,19 +16,21 @@ def calculo_sueldo_liquido(
     asignacion_colacion: float=0,
     asignacion_transporte: float=0,
     asignacion_otros: float=0):
+    #Indicadores
+    today = datetime.now()  
+    indicadores = UfRepository.get_utm_uf_by_date(today)
+
     #Calculo de sueldo imponible
     sueldo_imponible = sueldo_base + gratificacion 
     #descuentos AFP, Salud y AFC
     descuento_afp = calculo_descuento_afp(sueldo_imponible, afp)
     descuento_salud = calculo_descuento_salud(sueldo_imponible,salud)
-    descuento_cesantia_dict = seguro_cesantia(sueldo_imponible, tipo_contrato)
+    descuento_cesantia_dict = seguro_cesantia(sueldo_imponible, tipo_contrato,indicadores['valor_uf'])
     descuento_cesantia = descuento_cesantia_dict['aporte_trabajador']
     
     #Sueldo Tributario
     sueldo_tributario = sueldo_imponible - descuento_afp - descuento_salud - descuento_cesantia+asignacion_familiar+asignacion_colacion+asignacion_transporte+asignacion_otros
-    #Indicadores
-    today = datetime.now()  
-    indicadores = UfRepository.get_utm_uf_by_date(today)
+
     #Impuesto
     impuesto = impuesto_unico_sii(sueldo_tributario, indicadores['valor_utm'])
     #Resumen

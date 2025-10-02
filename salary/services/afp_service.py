@@ -51,10 +51,18 @@ def get_afp_commissions():
 
 def calculo_descuento_afp(monto_imponible_clp: float,afp: str):
     resultado = get_afp_commissions()
-    monto_afp = monto_imponible_clp * (resultado["comisiones"][afp]+10) / 100    
+    if afp not in resultado["comisiones"]:
+        if afp == "Sin_Cotización":
+            monto_afp = 0
+        if afp == "INP":
+            monto_afp = monto_imponible_clp * (max(resultado["comisiones"].values())+10) / 100
+        else:
+            raise ValueError(f"AFP {afp} no encontrada en el resultado")
+    else:
+        monto_afp = monto_imponible_clp * (resultado["comisiones"][afp]+10) / 100    
     return monto_afp
 
-def seguro_cesantia(sueldo_imponible: float, tipo_contrato: int) -> dict:
+def seguro_cesantia(sueldo_imponible: float, tipo_contrato: int,valor_uf: float=37000) -> dict:
     """
     Calcula el Seguro de Cesantía en Chile.
 
@@ -64,9 +72,12 @@ def seguro_cesantia(sueldo_imponible: float, tipo_contrato: int) -> dict:
     """
     # Tope imponible en UF (se actualiza periódicamente)
     TOPE_UF = 122.6
-    VALOR_UF = 37000  # <- aquí debes poner el valor vigente de la UF en pesos
-    TOPE_IMPONIBLE = TOPE_UF * VALOR_UF
-
+    
+    # Convertir valor_uf a float si viene como string desde la BD
+    if isinstance(valor_uf, str):
+        valor_uf = float(valor_uf)
+    
+    TOPE_IMPONIBLE = TOPE_UF * valor_uf
     # Aplicar tope imponible
     base_calculo = min(sueldo_imponible, TOPE_IMPONIBLE)
 

@@ -78,4 +78,20 @@ class ColaboradorRepository:
         # Usar la utilidad general para ejecutar la consulta y obtener los resultados
         result = DWConnectionUtils.fetch_dicts(sql, [np])
         return result[0] if result else None
+
+    @staticmethod
+    def parsear_afp(nom_afp):
+        nombres_afp={
+            "INP Empart": "INP",
+            "AFP: Capital": "Capital",
+            "AFP: Uno": "Uno",
+            "AFP: Modelo": "Modelo",
+            "INP SSS": "INP",
+            "Sin Cotización": "Sin_Cotización",
+            "AFP: Plan Vital": "Plan Vital",
+            "AFP: Provida": "Provida",
+            "AFP: Cuprum": "Cuprum",
+            "AFP: Habitat": "Habitat"
+        }
+        return nombres_afp.get(nom_afp, nom_afp)
     
