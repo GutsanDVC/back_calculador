@@ -66,3 +66,16 @@ class ColaboradorRepository:
         # Usar la utilidad general para ejecutar la consulta y obtener los resultados
         result = DWConnectionUtils.fetch_dicts(sql, [np])
         return result[0] if result else None
+    
+    @staticmethod
+    def obtener_afp_por_np(np):
+        """
+        Obtiene el sueldo base y valor de hora extra de un colaborador por su NP.
+        Retorna un dict con np, sueldo_base y valor_hr_extras o None si no se encuentra.
+        """
+        # Cargar la query desde archivo usando la utilidad
+        sql = DWConnectionUtils.sql_load('warehouse', 'obtener_compensacion_por_np.sql')
+        # Usar la utilidad general para ejecutar la consulta y obtener los resultados
+        result = DWConnectionUtils.fetch_dicts(sql, [np])
+        return result[0] if result else None
+    
