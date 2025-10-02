@@ -83,7 +83,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://192.168.10.47",
     "https://127.0.0.1",
     "https://calculadorfiniquitos.grupoflesan.com",
-    "https://apicalculadorfiniquitos.grupoflesan.com"
+    "https://apicalculadorfiniquitos.grupoflesan.com",
+    "https://qacalculador.grupoflesan.com"
 ]
 
 
