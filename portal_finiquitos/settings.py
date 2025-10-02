@@ -31,13 +31,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
-    ".grupoflesan.com",
+    "*.grupoflesan.com",
     "backfiniquitos.grupoflesan.com",
     "qafiniquitos.grupoflesan.com",
     "192.168.10.47",
     "127.0.0.1",
     "calculadorfiniquitos.grupoflesan.com",
-    "apicalculadorfiniquitos.grupoflesan.com"
+    "apicalculadorfiniquitos.grupoflesan.com",
+    "qacalculador.grupoflesan.com"
 ]
 
 GOOGLE_ID_TOKEN_INFO_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo"
