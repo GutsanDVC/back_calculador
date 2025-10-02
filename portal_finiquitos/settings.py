@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
-    "*.grupoflesan.com",
+    ".grupoflesan.com",
     "backfiniquitos.grupoflesan.com",
     "qafiniquitos.grupoflesan.com",
     "192.168.10.47",
