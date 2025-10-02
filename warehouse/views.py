@@ -117,7 +117,6 @@ class AfpPorNpView(APIView):
     """
     def get(self, request, *args, **kwargs):
         np = request.query_params.get('np')
-        
         if not np:
             return Response(
                 {'detail': 'El parámetro "np" es requerido'}, 
@@ -135,7 +134,7 @@ class AfpPorNpView(APIView):
         
         try:
             afp_colaborador = ColaboradorRepository.obtener_afp_por_np(np)
-            afp_parseada = ColaboradorRepository.parsear_afp(afp_colaborador)
+            afp_parseada = ColaboradorRepository.parsear_afp(afp_colaborador['nom_afp'])
             if afp_colaborador:
                 return Response({"afp":afp_parseada}, status=status.HTTP_200_OK)
             else:

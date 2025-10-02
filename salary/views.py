@@ -147,7 +147,7 @@ class CalculoSueldoLiquidoView(APIView):
         """
         try:
             # Validar parámetros requeridos
-            required_fields = ['sueldo_base', 'tipo_contrato', 'afp']
+            required_fields = ['sueldo_base', 'afp']
             for field in required_fields:
                 if field not in request.data:
                     return Response(
@@ -157,7 +157,7 @@ class CalculoSueldoLiquidoView(APIView):
             
             # Extraer parámetros del request
             sueldo_base = request.data.get('sueldo_base')
-            tipo_contrato = request.data.get('tipo_contrato')
+            tipo_contrato = request.data.get('tipo_contrato',1)
             afp = request.data.get('afp')
             salud = request.data.get('salud', 'Fonasa')
             gratificacion = request.data.get('gratificacion', 0)
