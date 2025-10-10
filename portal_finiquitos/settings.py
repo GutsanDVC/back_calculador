@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     "salary",        # Salarios
     "finiquito",     # Finiquitos
     "warehouse",     # Almacén de datos
-    "custom_auth",          # Autenticación
+    "custom_auth",   # Autenticación
+    "Bd_gestion",    # Base de datos de gestión
     
     # Autenticación social y API REST
     "allauth",
