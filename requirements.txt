@@ -34,3 +34,6 @@ drf-yasg
 
 # Web scraping
 beautifulsoup4
+
+# MySQL
+mysql-connector-python
