@@ -71,9 +71,9 @@ def calcular_gratificacion(sueldo_base: float, ingreso_minimo_mensual: float, mo
     :return: dict con detalle de cálculo.
     """
     
-    # Gratificación legal anual (25% con tope 4,75 IMM)
+    # Gratificación legal anual (25% con tope anual de 4,75 IMM Mensual)
     gratificacion_legal = sueldo_base * 0.25
-    tope_gratificacion = ingreso_minimo_mensual * 4.75
+    tope_gratificacion = ingreso_minimo_mensual * 4.75/12
     gratificacion_legal = min(gratificacion_legal, tope_gratificacion)
     
     # Si el usuario entrega un monto manual, se usa ese

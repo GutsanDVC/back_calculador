@@ -405,7 +405,7 @@ class CalculoSueldoBrutoDesdeNeto(APIView):
             asignacion_colacion = request.data.get('asignacion_colacion', 0)
             asignacion_transporte = request.data.get('asignacion_transporte', 0)
             asignacion_otros = request.data.get('asignacion_otros', 0)
-            tolerancia = request.data.get('tolerancia', 100.0)
+            tolerancia = request.data.get('tolerancia', 1.0)
             max_iteraciones = request.data.get('max_iteraciones', 100)
             
             # Validar tipos de datos
