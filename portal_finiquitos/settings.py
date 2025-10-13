@@ -27,7 +27,7 @@ load_dotenv(dotenv_path=BASE_DIR / '.env')
 SECRET_KEY = "django-insecure-7cb$#lx^)ja8phml(euccdb@reju=mmw8q3ch%)a1az)c*xdew"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -38,7 +38,9 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "calculadorfiniquitos.grupoflesan.com",
     "apicalculadorfiniquitos.grupoflesan.com",
-    "qacalculador.grupoflesan.com"
+    "qacalculador.grupoflesan.com",
+    "calculador.grupoflesan.com",
+    "apicalculador.grupoflesan.com"
 ]
 
 GOOGLE_ID_TOKEN_INFO_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo"
@@ -85,7 +87,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://127.0.0.1",
     "https://calculadorfiniquitos.grupoflesan.com",
     "https://apicalculadorfiniquitos.grupoflesan.com",
-    "https://qacalculador.grupoflesan.com"
+    "https://qacalculador.grupoflesan.com",
+    "https://calculador.grupoflesan.com",
+    "https://apicalculador.grupoflesan.com"
 ]
 
 

@@ -19,7 +19,10 @@ AFP={
     "MODEL": "Modelo",
     "PLANVITAL": "Planvital",
     "PROVIDA": "Provida",
-    "UNO": "Uno"
+    "UNO": "Uno",
+    "INP Empart": "Inp Empart",
+    "INP SSS": "Inp SSS",
+    "Sin_Cotización": "Sin_Cotización"
 }
 
 def get_afp_commissions():
@@ -46,7 +49,9 @@ def get_afp_commissions():
     for name, pct in patt.findall(html_text):
         pct_decimal = Decimal(pct.replace('.', '').replace(',', '.'))
         data[name.title()] = float(pct_decimal)
-
+    data["INP Empart"] = 8.84
+    data["INP SSS"] = 11.84
+    data["Sin_Cotización"] = 0
     return {"periodo": periodo, "fuente": URL, "comisiones": data}
 
 def calculo_descuento_afp(monto_imponible_clp: float,afp: str):
