@@ -31,7 +31,7 @@ def crear_usuario_global(np, nombre, email, usuario_creo,activo,ver_nfg):
     with get_db_connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute("""
-                INSERT INTO portal_finiquitos.global_access_user (np, nombre, email, usuario_creo, created_at,activo,ver_nfg)
+                INSERT INTO calculador.global_access_user (np, nombre, email, usuario_creo, created_at,activo,ver_nfg)
                 VALUES (%s, %s, %s, %s, NOW(),%s,%s)
             """, [np, nombre, email, usuario_creo,activo,ver_nfg])
         conn.commit()
@@ -46,7 +46,7 @@ def obtener_usuarios_globales():
         with conn.cursor() as cursor:
             cursor.execute("""
                 SELECT np, nombre, email, usuario_creo, created_at,activo,ver_nfg
-                FROM portal_finiquitos.global_access_user
+                FROM calculador.global_access_user
                 --WHERE activo = true
             """)
             columns = [col[0] for col in cursor.description]
@@ -60,7 +60,7 @@ def obtener_usuario_por_np(np):
         with conn.cursor() as cursor:
             cursor.execute("""
                 SELECT np, nombre, email, usuario_creo, created_at, activo, ver_nfg
-                FROM portal_finiquitos.global_access_user
+                FROM calculador.global_access_user
                 WHERE np = %s AND activo = true
             """, [np])
             row = cursor.fetchone()
@@ -79,7 +79,7 @@ def obtener_usuario_por_email(email):
             writeTxtLog("email",email,"INFO")
             cursor.execute("""
                 SELECT np, nombre, email, usuario_creo, created_at, activo, ver_nfg
-                FROM portal_finiquitos.global_access_user
+                FROM calculador.global_access_user
                 WHERE email = %s AND activo = true
             """, [email])
             row = cursor.fetchone()
@@ -121,7 +121,7 @@ def actualizar_usuario_global(np, nombre=None, email=None, usuario_creo=None, ac
     with get_db_connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute(f"""
-                UPDATE portal_finiquitos.global_access_user
+                UPDATE calculador.global_access_user
                 SET {', '.join(campos)}
                 WHERE np = %s
             """, valores)
@@ -137,7 +137,7 @@ def eliminar_usuario_global(np):
     with get_db_connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute("""
-                DELETE FROM portal_finiquitos.global_access_user WHERE np = %s
+                DELETE FROM calculador.global_access_user WHERE np = %s
             """, [np])
         conn.commit()
         return True
@@ -149,7 +149,7 @@ def existe_email_o_np(email, np):
     with get_db_connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute("""
-                SELECT COUNT(*) FROM portal_finiquitos.global_access_user WHERE email = %s OR np = %s
+                SELECT COUNT(*) FROM calculador.global_access_user WHERE email = %s OR np = %s
             """, [email, np])
             return cursor.fetchone()[0] > 0
 

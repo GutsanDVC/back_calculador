@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                "db_table": "portal_finiquitos.global_access_user",
+                "db_table": "calculador.global_access_user",
             },
         ),
     ]
