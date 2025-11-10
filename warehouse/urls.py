@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SapMaestroColaboradorListView, ExternalCode162ListView, ColaboradorPorCorreoView, CompensacionPorNpView,AfpPorNpView,CumpleañosView
+from .views import SapMaestroColaboradorListView, ExternalCode162ListView, ColaboradorPorCorreoView, CompensacionPorNpView,AfpPorNpView,CumpleanosView
 from .views_centro_costo import CentroCostoListView
 from .causal_termino_view import CausalTerminoListView
 from .views_uf import UfByDateView, UtmUfByDateView
@@ -16,5 +16,5 @@ urlpatterns = [
     # Endpoint para consultar el valor de la UF según una fecha dada
     path('uf/', UfByDateView.as_view(), name='warehouse-uf-by-date'),
     path('utm-uf/', UtmUfByDateView.as_view(), name='warehouse-utm-uf-by-date'),
-    path('cumpleanos/', CumpleañosView.as_view(), name='warehouse-cumpleanos'),
+    path('cumpleanos/', CumpleanosView.as_view(), name='warehouse-cumpleanos'),
 ]
