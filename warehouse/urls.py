@@ -16,5 +16,5 @@ urlpatterns = [
     # Endpoint para consultar el valor de la UF según una fecha dada
     path('uf/', UfByDateView.as_view(), name='warehouse-uf-by-date'),
     path('utm-uf/', UtmUfByDateView.as_view(), name='warehouse-utm-uf-by-date'),
-    path('cumpleaños/', CumpleañosView.as_view(), name='warehouse-cumpleaños'),
+    path('cumpleanos/', CumpleañosView.as_view(), name='warehouse-cumpleanos'),
 ]
