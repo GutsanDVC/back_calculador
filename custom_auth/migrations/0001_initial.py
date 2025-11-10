@@ -22,8 +22,13 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
+                ("np", models.CharField(max_length=254, unique=True)),
+                ("nombre", models.CharField(max_length=254)),
                 ("email", models.EmailField(max_length=254, unique=True)),
+                ("usuario_creo", models.CharField(max_length=254)),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("activo", models.BooleanField(default=True)),
+                ("ver_nfg", models.BooleanField(default=True)),
             ],
             options={
                 "db_table": "calculador.global_access_user",

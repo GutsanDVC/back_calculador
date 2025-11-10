@@ -97,3 +97,16 @@ class ColaboradorRepository:
         }
         return nombres_afp.get(nom_afp, nom_afp)
     
+       
+    @staticmethod
+    def obtener_cumpleaños_por_fecha(fecha):
+        """
+        Obtiene el sueldo base y valor de hora extra de un colaborador por su NP.
+        Retorna un dict con np, sueldo_base y valor_hr_extras o None si no se encuentra.
+        """
+        # Cargar la query desde archivo usando la utilidad
+        sql = DWConnectionUtils.sql_load('warehouse', 'cumpleaños.sql')
+        # Usar la utilidad general para ejecutar la consulta y obtener los resultados
+        params={'fecha': fecha}
+        result = DWConnectionUtils.fetch_dicts(sql, params)
+        return result

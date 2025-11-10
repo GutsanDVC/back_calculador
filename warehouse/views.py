@@ -146,3 +146,12 @@ class AfpPorNpView(APIView):
         except Exception as e:
             # Retorna error genérico y mensaje para debug
             return Response({'detail': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class CumpleañosView(APIView):
+    def get (self, request, *args, **kwargs):
+        try:
+            cumpleaños = ColaboradorRepository.obtener_cumpleaños_por_fecha(request.query_params.get('to_date'))
+            return Response(cumpleaños, status=status.HTTP_200_OK)
+        except Exception as e:
+            # Retorna error genérico y mensaje para debug
+            return Response({'detail': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
