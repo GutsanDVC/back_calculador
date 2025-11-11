@@ -9,7 +9,8 @@ SELECT
     c.centro_costo,
     c.nombre_centro_costo,
     c.genero,
-    c.external_cod_cargo
+    c.external_cod_cargo,
+    concat('https://api19.sapsf.com/odata/v2/Photo(userId=',c.user_id, ',photoType=1)/$value') AS img,
 FROM 
     flesan_rrhh.sap_maestro_colaborador AS c
 WHERE 
