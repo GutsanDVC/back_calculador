@@ -10,9 +10,14 @@ SELECT
     c.nombre_centro_costo,
     c.genero,
     c.external_cod_cargo,
+    cargos.nombre_cargo,
     concat('https://api19.sapsf.com/odata/v2/Photo(userId=',c.user_id, ',photoType=1)/$value') AS img,
 FROM 
     flesan_rrhh.sap_maestro_colaborador AS c
+left join 
+flesan_rrhh.sap_maestro_cargos cargos
+on
+c.external_cod_cargo =cargos.external_code
 WHERE 
     c.empl_status = '41111'
     AND TO_CHAR(CAST(c.fecha_ingreso_original_date AS date), 'MM') = TO_CHAR(CAST(%(fecha)s AS date), 'MM')
