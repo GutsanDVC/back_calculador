@@ -23,6 +23,7 @@ from finiquito import urls as finiquito_urls
 from custom_auth import urls as auth_urls
 from salary import urls as salary_urls
 from Bd_gestion import urls as bd_gestion_urls
+from img import urls as img_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,4 +35,6 @@ urlpatterns = [
     path('api/salary/', include(salary_urls)),
     # Endpoint API para BD de gestión (MySQL)
     path('api/bd-gestion/', include(bd_gestion_urls)),
+    # Endpoint API para imágenes
+    path('api/img/', include(img_urls)),
 ]

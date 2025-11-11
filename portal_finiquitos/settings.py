@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     "warehouse",     # Almacén de datos
     "custom_auth",   # Autenticación
     "Bd_gestion",    # Base de datos de gestión
+    "img",           # Imágenes
     
     # Autenticación social y API REST
     "allauth",
@@ -93,7 +94,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://calculador.grupoflesan.com",
     "https://apicalculador.grupoflesan.com",
     "https://calendario.grupoflesan.com",
-    "https://qacalendario.grupoflesan.com"
+    "https://qacalendario.grupoflesan.com",
     "https://*.grupoflesan.com"
 ]
 
