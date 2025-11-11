@@ -110,3 +110,36 @@ class ColaboradorRepository:
         params={'fecha': fecha}
         result = DWConnectionUtils.fetch_dicts(sql, params)
         return result
+    
+    @staticmethod
+    def obtener_cumpleanos_mes_por_fecha(fecha):
+        """
+        Retorna los colaboradores que cumplen años en el mes de la fecha indicada.
+        """
+        # Cargar la query desde archivo usando la utilidad
+        sql = DWConnectionUtils.sql_load('warehouse', 'cumpleanos_mes.sql')
+        # Usar la utilidad general para ejecutar la consulta y obtener los resultados
+        params={'fecha': fecha}
+        result = DWConnectionUtils.fetch_dicts(sql, params)
+        return result
+    
+    @staticmethod
+    def obtener_aniversario_por_fecha(fecha):
+        """
+        Retorna los colaboradores que están de aniversario laboral en la fecha indicada (mismo día y mes).
+        """
+        sql = DWConnectionUtils.sql_load('warehouse', 'aniversario.sql')
+        params={'fecha': fecha}
+        result = DWConnectionUtils.fetch_dicts(sql, params)
+        return result
+
+    @staticmethod
+    def obtener_aniversario_mes_por_fecha(fecha):
+        """
+        Retorna los colaboradores que están de aniversario laboral en el mes de la fecha indicada.
+        """
+        sql = DWConnectionUtils.sql_load('warehouse', 'aniversario_mes.sql')
+        params={'fecha': fecha}
+        result = DWConnectionUtils.fetch_dicts(sql, params)
+        return result
+    

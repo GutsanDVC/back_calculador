@@ -13,7 +13,7 @@ FROM
     flesan_rrhh.sap_maestro_colaborador AS c
 WHERE 
     c.empl_status = '41111'
-    AND TO_CHAR(CAST(c.fecha_nacimiento_date AS date), 'MM-DD') = TO_CHAR(CAST(%(fecha)s AS date), 'MM-DD')
+    AND TO_CHAR(CAST(c.fecha_nacimiento_date AS date), 'MM') = TO_CHAR(CAST(%(fecha)s AS date), 'MM')
 order by TO_CHAR(CAST(c.fecha_nacimiento_date AS date), 'DD')
 ),
 centros_costos as(
