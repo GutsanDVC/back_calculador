@@ -40,7 +40,9 @@ ALLOWED_HOSTS = [
     "apicalculadorfiniquitos.grupoflesan.com",
     "qacalculador.grupoflesan.com",
     "calculador.grupoflesan.com",
-    "apicalculador.grupoflesan.com"
+    "apicalculador.grupoflesan.com",
+    "calendario.grupoflesan.com",
+    "*.grupoflesan.com"
 ]
 
 GOOGLE_ID_TOKEN_INFO_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo"
@@ -89,7 +91,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://apicalculadorfiniquitos.grupoflesan.com",
     "https://qacalculador.grupoflesan.com",
     "https://calculador.grupoflesan.com",
-    "https://apicalculador.grupoflesan.com"
+    "https://apicalculador.grupoflesan.com",
+    "https://calendario.grupoflesan.com",
+    "https://qacalendario.grupoflesan.com"
+    "https://*.grupoflesan.com"
 ]
 
 
