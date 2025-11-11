@@ -11,7 +11,7 @@ SELECT
     c.genero,
     c.external_cod_cargo,
     cargos.nombre_cargo,
-    concat('https://api19.sapsf.com/odata/v2/Photo(userId=',c.user_id, ',photoType=1)/$value') AS img,
+    concat('https://api19.sapsf.com/odata/v2/Photo(userId=',c.user_id, ',photoType=1)/$value') AS img
 FROM 
     flesan_rrhh.sap_maestro_colaborador AS c
 left join 
