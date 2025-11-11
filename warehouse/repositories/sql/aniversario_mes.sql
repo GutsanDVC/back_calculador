@@ -8,6 +8,7 @@ SELECT
     c.empl_status,
     c.centro_costo,
     c.nombre_centro_costo,
+    c.genero,
     c.external_cod_cargo
 FROM 
     flesan_rrhh.sap_maestro_colaborador AS c
