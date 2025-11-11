@@ -25,8 +25,8 @@ class SAPPhotoProxyView(View):
                 return http_response
             else:
                 logger.warning(f"SAP no devolvió imagen válida para user_id={user_id}")
-                return HttpResponse("", content_type="text/plain", status=200)
+                return HttpResponse("", content_type="text/plain", status=204)
 
         except Exception as e:
             logger.error(f"Error al obtener foto de SAP para {user_id}: {str(e)}")
-            return HttpResponse("", content_type="text/plain", status=200)
+            return HttpResponse("", content_type="text/plain", status=204)
