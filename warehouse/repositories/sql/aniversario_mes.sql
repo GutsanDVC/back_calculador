@@ -30,6 +30,15 @@ SELECT
 FROM flesan_rrhh.sap_maestro_colaborador AS smc
 WHERE 
     empl_status='41111'
+    AND NOT (
+        centro_costo LIKE '%OPR11122'
+        OR centro_costo LIKE '%FOP110125G'
+        OR centro_costo LIKE '%OPR11116GG'
+        OR centro_costo LIKE '%OPR11117PV'
+        OR centro_costo LIKE '%OPR11123GG'
+        OR centro_costo LIKE '%OPR11124NS'
+        OR centro_costo LIKE '%A049'
+    )
 order by empresa,centro_costo
 ),
 empresas as (
