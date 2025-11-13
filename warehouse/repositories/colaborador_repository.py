@@ -129,7 +129,7 @@ class ColaboradorRepository:
         Retorna los colaboradores que están de aniversario laboral en la fecha indicada (mismo día y mes).
         """
         sql = DWConnectionUtils.sql_load('warehouse', 'aniversario.sql')
-        params={'fecha': fecha}
+        params={'fecha':fecha}
         result = DWConnectionUtils.fetch_dicts(sql, params)
         return result
 
@@ -139,7 +139,7 @@ class ColaboradorRepository:
         Retorna los colaboradores que están de aniversario laboral en el mes de la fecha indicada.
         """
         sql = DWConnectionUtils.sql_load('warehouse', 'aniversario_mes.sql')
-        params={'fecha': fecha}
+        params={'fecha': str(fecha)}
         result = DWConnectionUtils.fetch_dicts(sql, params)
         return result
     
