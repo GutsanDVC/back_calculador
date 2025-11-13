@@ -24,10 +24,10 @@ def impuesto_unico_sii(renta_imponible_clp: float, valor_utm: float) -> float:
     #Aseguar que valores sean float
     valor_utm = float(valor_utm)
     renta_imponible_clp = float(renta_imponible_clp)
-    print("UTM",valor_utm)
-    print("renta_imponible_clp",renta_imponible_clp)
+    # print("UTM",valor_utm)
+    # print("renta_imponible_clp",renta_imponible_clp)
     renta_utm = renta_imponible_clp / valor_utm
-    print("renta_utm",renta_utm)
+    # print("renta_utm",renta_utm)
     
     for limite, tasa, rebaja in tabla:
         if renta_utm <= limite:
