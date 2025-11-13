@@ -24,3 +24,7 @@ bs4 = "*"
 [requires]
 python_version = "3.12"
 python_full_version = "3.12.3"
+
+[scripts]
+dev = "python manage.py runserver"
+
