@@ -20,7 +20,11 @@ class KiptorSettlementSimulatorView(APIView):
             # 2. Calcular datos para finiquito
             resultado_finiquito = SettlementRepository.calcular_finiquito(datos)
             resultado_finiquito_parseado = parsear_resultado(resultado_finiquito)
-            datos_uf=UfRepository.get_uf_by_date(datos['fecha_desvinculacion'])
+            # 2.1 Obtener valor UF
+            fecha_desvinculacion = datos['fecha_desvinculacion']
+            first_day_current = fecha_desvinculacion.replace(day=1)
+            last_day_previous = first_day_current - timedelta(days=1)
+            datos_uf=UfRepository.get_uf_by_date(last_day_previous)
             valor_uf=datos_uf['valor_uf']
             body=parsear_body_for_kiptor(datos,resultado_finiquito_parseado,valor_uf)
             # 3. Simular con Kiptor
